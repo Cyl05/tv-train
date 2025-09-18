@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function callBack(userData) {
+            console.log(userData);
+        }
+
+        function fetchUserData(callback) {
+            const userData = {
+                username: "Chiraag",
+                password: "jefjwemjfnwnjfnwn",
+                displayName: "Cyl"
+            }
+
+            callback(userData);
+        }
+
+        fetchUserData(callBack);
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function makeCounter() {
+            let counter = 1;
+            function counterValue() {
+                return counter;
+            }
+
+            function increment() {
+                counter++;
+            }
+
+            function decrement() {
+                counter--;
+            }
+
+            return {counterValue, increment, decrement};
+        }
+
+        const { counterValue, increment, decrement } = makeCounter();
+
+        console.log(counterValue());
+        increment();
+        console.log(counterValue());
+        decrement();
+        decrement();
+        console.log(counterValue());
+    </script>
+</body>
+</html>

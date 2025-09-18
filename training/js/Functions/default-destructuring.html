@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="userForm">
+        <h1>Enter Student Details:</h1>
+        <div style="margin: 20px">
+            <label for="name">Name:</label>
+            <input name="name" type="text" /><br>
+        </div>
+
+        <div style="margin: 20px">
+            <label for="age">Age:</label>
+            <input name="age" type="number" />
+        </div>
+
+        <div style="margin: 20px">
+            <label for="roles">Roles: (comma-seperated)</label>
+            <textarea name="roles"></textarea>
+        </div>
+
+        <div style="margin: 20px">
+            <input type="Submit" />
+        </div>
+    </form>
+    <script>
+        document.querySelector("#userForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const formData = document.querySelector("#userForm");
+            const name = formData.name.value;
+            const age = formData.age.value;
+            const roles = formData.roles.value.split(",").map(role => role.trim());
+            
+            console.log(createUser({name, age}, ...roles));
+        });
+
+        function createUser({ name, age, country = "India" }, ...roles) {
+            return {name, age, country, roles};
+        }
+    </script>
+</body>
+</html>

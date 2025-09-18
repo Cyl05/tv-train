@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const coffeePromise = fetch('https://api.sampleapis.com/coffee/hot');
+        const codingPromise = fetch('https://api.sampleapis.com/codingresources/codingResources');
+        Promise.all([coffeePromise, codingPromise])
+        .then((values) => (Promise.all(values.map((val) => (val.json())))))
+        .then((jsonData) => {console.log(jsonData)});
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function outer() {
+            const outerName = "Talview";
+
+            function inner() {
+                const innerName = "AIWF Technologies";
+                console.log(`Inner Name: ${innerName}`);
+                console.log(`Outer Name: ${outerName}`);
+            }
+            inner();
+            try {
+                console.log(`Inner Name: ${innerName}`);
+            } catch (error) {
+                console.log("Out of function scope");
+            }
+            console.log(`Outer Name: ${outerName}`);
+        }
+
+        outer();
+    </script>
+</body>
+</html>
