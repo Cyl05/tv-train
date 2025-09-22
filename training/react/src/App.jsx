@@ -5,6 +5,7 @@ import ComponentsAndProps from './pages/ComponentsAndProps.jsx';
 import HandlingEvents from './pages/HandlingEvents.jsx';
 import Forms from './pages/Forms.jsx';
 import { NameProvider } from './components/NameContext.jsx';
+import DynamicPage from './pages/DynamicPage.jsx';
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 				<Route path="/comps-and-props" element={<ComponentsAndProps />} />
 				<Route path="/handling-events" element={<HandlingEvents />} />
 				<Route path="/forms" element={<Forms />} />
+				<Route path="/router/:name" element={<DynamicPage />} />
 			</Routes>
 		</NameProvider>
 	)
