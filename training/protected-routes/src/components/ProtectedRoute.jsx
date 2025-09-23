@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const ProtectedRoute = ({ children }) => {
 	const [auth, setAuth] = useState(null);
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		fetch('http://localhost:3000/profile')
-		.then(() => setAuth(true))
-		.catch(() => setAuth(false));
+		fetch('http://localhost:3000/profile', {
+			credentials: 'include',
+		})
+			.then((res) => {
+				if (res.ok) {
+					setAuth(true);
+				} else {
+					setAuth(false);
+				}
+			})
+			.catch((err) => {
+				setAuth(false);
+			});
 	}, []);
 
 	if (auth === null) return <div>Loading...</div>
-	return auth ? children : navigate("/login");
+	return auth ? children : <Navigate to={"/login"} />;
 }
 
 export default ProtectedRoute;

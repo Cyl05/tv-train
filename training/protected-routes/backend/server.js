@@ -78,7 +78,15 @@ app.get("/profile", isAuthenticated, (req, res) => {
     const { userId } = req.session;
     const matchingUser = users.find((u) => (u.id == userId));
 
-    res.json({message: `Welcome to your profile, ${matchingUser.username}`});
+    res.status(200).json({message: `Welcome to your profile, ${matchingUser.username}`});
+});
+
+app.get("/username", isAuthenticated, (req, res) => {
+    const userId = req.session.userId;
+
+    const matchingUser = users.filter((u) => (u.id === userId));
+
+    res.status(200).json({username: matchingUser[0].username});
 });
 
 app.listen(port, () => {

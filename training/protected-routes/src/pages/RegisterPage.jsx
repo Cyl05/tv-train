@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
     const [formData, setFormData] = useState({
@@ -7,6 +8,8 @@ const RegisterPage = () => {
         confirmPassword: "",
     });
 
+    const navigate = useNavigate();
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -14,13 +17,24 @@ const RegisterPage = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Register Data:", formData);
 
         if (formData.password !== formData.confirmPassword) {
             alert("Passwords do not match!");
             return;
+        } else {
+            try {
+                await fetch("http://localhost:3000/register", {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    credentials: 'include',
+                    body: JSON.stringify(formData),
+                });
+                navigate("/profile");
+            } catch (error) {
+                alert(error.message)
+            }
         }
     };
 
