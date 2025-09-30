@@ -8,7 +8,7 @@ const Pagination = ({ total, limit, currentPage, selectPage }) => {
         <ul className="pagination">
             {pages.map((page) => {
                 return <li
-                    data-testId="page-container"
+                    data-testid="page-container"
                     key={page}
                     onClick={() => selectPage(page)}
                     className={`page-item ${currentPage === page ? "active": ""}`}
