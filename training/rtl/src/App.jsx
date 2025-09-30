@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import Counter from './Counter';
+import React from 'react';
 
 function App() {
+
 	return (
-		<Counter />
-	);
+		<h1>App</h1>
+	)
 }
 
 export default App;
