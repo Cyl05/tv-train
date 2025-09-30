@@ -1,7 +1,7 @@
 import forEach from "./forEach";
 
 // callback mock function
-const mockCallbackFunction = jest.fn(n => n + 42);
+const mockCallbackFunction = jest.fn();
 
 test("test callback calling", () => {
     forEach([1, 2, 3, 4], mockCallbackFunction);
