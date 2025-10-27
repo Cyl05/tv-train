@@ -1,7 +1,13 @@
+import { ApolloProvider } from "@apollo/client/react";
 import React from "react";
+import { client } from "./apolloClient";
+import Content from "./Content";
+
 const App: React.FC = () => {
 	return (
-		<h1>Hello</h1>
+		<ApolloProvider client={client}>
+			<Content />
+		</ApolloProvider>
 	);
 };
 
