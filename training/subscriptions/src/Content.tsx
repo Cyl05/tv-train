@@ -11,8 +11,8 @@ const COUNTER_SUBSCRIPTION = gql`
 `;
 
 const INCREMENT_MUTATION = gql`
-  mutation Increment($delta: Int!) {
-    update_counter_by_pk(pk_columns: { id: 1 }, _inc: { value: $delta }) {
+  mutation Increment($change: Int!) {
+    update_counter_by_pk(pk_columns: { id: 1 }, _inc: { value: $change }) {
       value
     }
   }
@@ -26,8 +26,8 @@ const Content: React.FC = () => {
 
 	const value = data?.counter_by_pk?.value ?? 0;
 
-	const handleIncrement = (delta: number) => {
-		updateCounter({ variables: { delta } });
+	const handleIncrement = (change: number) => {
+		updateCounter({ variables: { change } });
 	};
 
 	return (
